@@ -1,0 +1,7 @@
+.button-row button,
+.button-row a {
+  margin-left:1%; 
+  /*margin-right:1%;*/
+  height: 100px;
+  width: 32%;
+}

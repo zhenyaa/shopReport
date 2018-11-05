@@ -1,0 +1,25 @@
+<mat-card class="last-component">
+	<mat-card-title>Вечерний отчет</mat-card-title>
+	<mat-card-content>
+			<form class="example-form">
+		  <mat-form-field class="example-full-width">
+		    <input matInput [(ngModel)]= "lReport.desk" placeholder="Касса" name="Desk" value="00">
+		  </mat-form-field>
+
+		  <mat-form-field class="example-full-width">
+		    <input matInput [(ngModel)]= "lReport.computerDesk" placeholder="Касса по компютеру" name="ComputerDesk" value="00">
+		  </mat-form-field>
+
+		   <mat-form-field class="example-full-width">
+		    <input matInput [(ngModel)]= "lReport.notMany" placeholder="Безналичный" name="NotMany" value="000">
+		  </mat-form-field>
+
+		   <mat-form-field class="example-full-width">
+		    <input matInput [(ngModel)]= "lReport.liveMany" placeholder="Остаток Размен" name="LiveMany" value="450">
+		  </mat-form-field>
+		</form>
+	</mat-card-content>
+	<mat-card-actions>
+		 <button onclick="M.toast({html: 'Добавленно'})" mat-raised-button color="primary" (click)="sendReport()">Отправить</button>
+	</mat-card-actions>
+</mat-card>

@@ -1,0 +1,34 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Добавить магазин
+      </mat-panel-title>
+      <mat-panel-description>
+        <!-- сумма и поставщик -->
+      </mat-panel-description>
+    </mat-expansion-panel-header> 
+      <input matInput [(ngModel)]='operation2.name' placeholder="Магазин">  
+      <!-- <input matInput [(ngModel)]='operation2.sum' placeholder="Сумма" type="number"> -->
+   <mat-action-row class = "submit-row">
+    <button onclick="M.toast({html: 'Добавленно'})" mat-raised-button color="primary" (click)="createShop()">Отправить</button>
+  </mat-action-row>
+  </mat-expansion-panel>
+  <mat-expansion-panel [expanded]= "panelOpenState === true" (opened)="panelOpenState = true"  (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Список Магазинов
+      </mat-panel-title>
+      <mat-panel-description>
+        сейчас {{panelOpenState ? 'открыто' : 'закрыто'}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+   <mat-list>
+   					  <mat-list-item *ngFor="let oper of operation">
+    						<h3 matLine> {{oper.shopname}} </h3>
+      						<!-- <span> {{oper.sum}} </span> -->
+    						<!-- <h3 matLine> {{oper.sum}} </h3> -->
+  					  </mat-list-item>
+</mat-list>
+  </mat-expansion-panel>
+</mat-accordion>

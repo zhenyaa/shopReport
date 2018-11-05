@@ -1,0 +1,31 @@
+ <nav class="forDesctop">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Отчет</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a *ngIf = "auth.isLoggednIn()" routerLink="/report">Отчеты</a></li>
+        <li><a *ngIf = "auth.checRule()" routerLink="/admin">Админ</a></li>
+        <li><a *ngIf = "! auth.isLoggednIn()" routerLink="/login">Вход</a></li>
+        <li><a *ngIf = "auth.isLoggednIn()" (click)="auth.logout()">Выход</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+<!-- <mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>Меню </p>
+          <ul id="nav-mobile">
+        <li><a *ngIf = "auth.isLoggednIn()" routerLink="/report">Отчеты</a></li>
+        <li><a *ngIf = "auth.checRule()" routerLink="/admin">Админ</a></li>
+        <li><a *ngIf = "! auth.isLoggednIn()" routerLink="/login">Вход</a></li>
+        <li><a *ngIf = "auth.isLoggednIn()" (click)="auth.logout()">Выход</a></li>
+      </ul>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
+  </div>
+
+</mat-drawer-container> -->

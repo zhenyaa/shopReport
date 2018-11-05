@@ -1,0 +1,17 @@
+<!-- <div class="button-row">
+  <button mat-flat-button color="primary" routerLink="/report/morning">Утро</button>
+  <button mat-flat-button color="primary" routerLink="/report/payreport">Расходы</button>
+  <button mat-flat-button color="primary" routerLink="/report/lastreport">Вечерний отчет</button>
+</div> -->
+<nav class="nav-extended">
+ <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li *ngIf="getM()" class="tab"><a routerLink="/report/morning" >Утро</a></li>
+        <li class="tab"><a routerLink="/report/payreport" > Расходы </a></li>
+        <li *ngIf="getE()" class="tab"><a routerLink="/report/lastreport" >Вечерний отчет</a></li>
+      </ul>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>
+<!-- <router-outlet name="nameFour"></router-outlet> -->

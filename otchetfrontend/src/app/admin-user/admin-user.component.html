@@ -1,0 +1,33 @@
+<mat-card>
+	<mat-form-field>
+	  <mat-select [(ngModel)]="user.shopname" name="shopname" placeholder="Список магазинов">
+    <mat-option *ngFor="let shop of shops" [value]="shop.shopname" >
+      {{shop.shopname}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field>
+	 <input matInput [(ngModel)]="user.username" name="username" placeholder="Имя" value="">
+</mat-form-field>
+<mat-form-field>
+	 <input matInput [(ngModel)]="user.pass" name="pass" placeholder="Пароль" value="">
+</mat-form-field>
+<button onclick="M.toast({html: 'Добавленно'})" mat-raised-button color="primary" (click)="createUser()">Отправить</button>
+</mat-card>
+
+<mat-card>
+	<mat-accordion>
+		  <mat-expansion-panel [expanded]= "userPanel === true" (opened)="userPanel = true"  (closed)="userPanel = false">
+    		<mat-expansion-panel-header>
+     		 <h5>Список магазинов и касс</h5>
+    		</mat-expansion-panel-header>
+
+				   <mat-list>
+   					  <mat-list-item *ngFor="let usshop of userShop">
+    						<h3 matLine> {{usshop.shopname}} </h3>
+      						<span> {{usshop.workplacename}} </span>
+  					  </mat-list-item>
+					</mat-list>
+  			</mat-expansion-panel>
+	</mat-accordion>
+</mat-card>

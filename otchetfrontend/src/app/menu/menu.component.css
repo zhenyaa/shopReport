@@ -1,0 +1,72 @@
+@media only screen and (min-width: 800px) {
+    body {
+        background-color: lightblue;
+    }
+    .forDesctop{
+    	display: block;
+    }
+    .example-container{
+    	display: none;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    body {
+        background-color: lightblue;
+    }
+    .forDesctop{
+    	display: none;
+    }
+
+    .example-container{
+    	display: block;
+    }
+    .example-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+}
+
+
+@media only screen and (max-width: 800px) {
+    body {
+        background-color: lightblue;
+    }
+     .forDesctop{
+    	display: none;
+    }
+     .example-container{
+    	display: block;
+    }
+    .example-container {
+  width: 500px;
+  height: 300px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+  
+}

@@ -1,0 +1,9 @@
+<mat-card class="morning-component">
+	<mat-card-title> Утренная касса</mat-card-title>
+	<mat-card-content>
+		<input matInput [(ngModel)]= "kash.kashDesk" placeholder="Утренная касса" value="0">
+	</mat-card-content>
+	<mat-card-actions>
+		 <button onclick="M.toast({html: 'Добавленно'})" mat-raised-button color="primary" (click)="sendCash()">Отправить</button>
+	</mat-card-actions>
+</mat-card>

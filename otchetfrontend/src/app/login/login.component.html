@@ -1,0 +1,6 @@
+<form>
+<h1>Логин</h1>
+<input  [(ngModel)]="login.name" placeholder="логин" type="text" name="Username"  required="">
+<input   [(ngModel)]="login.pass" placeholder="пароль" type="password"  name="Password" required="">
+<button (click)="onClickMe()" >Войти</button>
+</form>
