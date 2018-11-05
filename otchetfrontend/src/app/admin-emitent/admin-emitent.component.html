@@ -1,0 +1,23 @@
+<mat-card>
+<mat-form-field>
+	 <input matInput [(ngModel)]="emitent.name" name="name" placeholder="Имя" value="">
+</mat-form-field>
+<button onclick="M.toast({html: 'Добавленно'})" mat-raised-button color="primary" (click)="createEmitent()">Отправить</button>
+</mat-card>
+
+<mat-card>
+	<mat-accordion>
+		  <mat-expansion-panel [expanded]= "userPanel === true" (opened)="userPanel = true"  (closed)="userPanel = false">
+    		<mat-expansion-panel-header>
+     		 <h5>Список Эмитентов</h5>
+    		</mat-expansion-panel-header>
+
+				   <mat-list>
+   					  <mat-list-item *ngFor="let emitent of emi">
+    						<h3 matLine> {{emitent.name}} </h3>
+      						<!-- <span> {{usshop.workplacename}} </span> -->
+  					  </mat-list-item>
+					</mat-list>
+  			</mat-expansion-panel>
+	</mat-accordion>
+</mat-card>

@@ -9,7 +9,8 @@ import {AdminPageComponent} from '../admin-page/admin-page.component'
 import {AdminShopComponent} from '../admin-shop/admin-shop.component'
 import {AdminUserComponent} from '../admin-user/admin-user.component'
 import {AdminReportComponent} from '../admin-report/admin-report.component'
-import {AuthGuard} from '../auth.guard';
+import {AdminEmitentComponent} from '../admin-emitent/admin-emitent.component'
+import {AuthGuard} from '../auth.guard'
 const child2routes: Routes = [
   // { path: 'report', component: SecondMenuComponent },
   { path: 'lastreport', component: LastReportComponent },
@@ -22,11 +23,12 @@ const child3routes: Routes = [
   { path: 'adminshop', component: AdminShopComponent },
   { path: 'adminuser', component: AdminUserComponent },
   { path: 'morning', component: MorningComponent },
+  { path: 'emitent', component: AdminEmitentComponent },
 ];
 
 
 const routes: Routes = [
-  { path: 'report', component: SecondMenuComponent, children: child2routes },
+  { path: 'report', component: SecondMenuComponent, children: child2routes, canActivate: [AuthGuard] },
   { path: 'admin', component: AdminPageComponent, children: child3routes,  canActivate: [AuthGuard] },
   
   { path: 'login', component: LoginComponent },

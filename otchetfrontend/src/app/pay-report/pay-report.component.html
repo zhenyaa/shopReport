@@ -7,8 +7,16 @@
       <mat-panel-description>
         сумма и поставщик
       </mat-panel-description>
-    </mat-expansion-panel-header> 
-      <input matInput [(ngModel)]='operation2.name' placeholder="Поставщик">  
+    </mat-expansion-panel-header>
+    <mat-form-field>
+    <mat-select [(ngModel)]="operation2.name" name="name" placeholder="Список эмитентов">
+    <mat-option *ngFor="let emi of emitent" [value]="emi.name" >
+      {{emi.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+      
+      <!-- <input matInput [(ngModel)]='operation2.name' placeholder="Поставщик">   -->
       <input matInput [(ngModel)]='operation2.sum' placeholder="Сумма" type="number">
    <mat-action-row class = "submit-row">
     <button onclick="M.toast({html: 'Добавленно'})" mat-raised-button color="primary" (click)="createContact()">отправить</button>

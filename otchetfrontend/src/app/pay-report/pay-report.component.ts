@@ -16,6 +16,7 @@ interface Opera{
 export class PayReportComponent implements OnInit {
 panelOpenState1 = true;
 panelOpenState2 = false;
+public  emitent:  Array<object> = [];
 public  operation:  Array<object> = [];
  operation2: Opera = {
 	name : "",
@@ -26,6 +27,7 @@ public  operation:  Array<object> = [];
 
   ngOnInit() {
   	 this.getContacts();
+     this.getEmitent();
   }
   public  getContacts(){
     this.apiService.getContacts({day:"today", thisUser: true}).subscribe((data:  Array<object>) => {
@@ -35,10 +37,17 @@ public  operation:  Array<object> = [];
     console.log(this.operation)
 };
 
+  getEmitent(){
+    this.apiService.getEmitentAll().subscribe((data:  Array<object>) => {
+           this.emitent  = data;
+           console.log('its emitent',data);
+      });
+  }
+
 
 
 createContact(){
-const operation1  = {sum: 200,name: "optima"};
+  console.log(this.operation2)
 this.panelOpenState2 = true;
 this.apiService.createContact(this.operation2).subscribe((response) => {
     console.log(response);

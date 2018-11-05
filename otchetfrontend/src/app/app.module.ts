@@ -60,6 +60,9 @@ import { AdminUserComponent } from './admin-user/admin-user.component';
 import { MyfilterPipe } from './admin-report/myfilter.pipe';
 import {CdkTableModule} from '@angular/cdk/table';
 import {AuthGuard} from './auth.guard';
+import { AdminEmitentComponent } from './admin-emitent/admin-emitent.component';
+import { MAT_DATE_LOCALE } from '@angular/material';
+import { LOCALE_ID } from '@angular/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +75,8 @@ import {AuthGuard} from './auth.guard';
     AdminReportComponent,
     AdminShopComponent,
     AdminUserComponent,
-    MyfilterPipe
+    MyfilterPipe,
+    AdminEmitentComponent
   ],
   imports: [
     HttpClientModule,
@@ -103,7 +107,8 @@ import {AuthGuard} from './auth.guard';
     exports: [
     RouteRoutingModule,
    ],
-  providers: [LoginService, APIService, AuthGuard,],
+  providers: [LoginService, APIService, AuthGuard,{ provide: MAT_DATE_LOCALE, useValue: "ru-RU" } ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

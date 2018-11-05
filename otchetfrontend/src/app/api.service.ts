@@ -27,6 +27,15 @@ getOperationAll(){
     return  this.httpClient.get(`/operation`);
 }
 
+getEmitentAll(){
+    return  this.httpClient.get(`/emitent`);
+}
+
+createEmitent(username){
+    console.log('test',username)
+    return  this.httpClient.post(`/emitent/`,username, ParseHeaders);
+}
+
 getShop(){
     return  this.httpClient.get(`/shop`);
 }

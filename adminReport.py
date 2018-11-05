@@ -2,7 +2,10 @@ from flask_restful import Resource, Api
 from flask import Flask, request, jsonify
 from model import db, WorkPleace, MorningDesk, Shop, Inkasation, EveningReport
 import  datetime
+# from app import requires_roles as rqr
 from flask_login import login_required
+
+# import app
 #from flask_sqlalchemy.sql import func
 class AdminReport(Resource):
 

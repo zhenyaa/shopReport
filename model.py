@@ -90,6 +90,19 @@ class EveningReport(db.Model):
         return True if self.reportdate == datetime.date.today() else False
     def __repr__(self):
         return '<evening report %r>' % self.computerdesk
+
+class Emitent(db.Model):
+    __tablename__ = 'emitent'
+
+    def __init__(self, emitent):
+        self.emitentname = emitent
+
+    id = db.Column(db.Integer, primary_key=True)
+    emitentname = db.Column(db.String(120))
+
+    def __repr__(self):
+        return '<emi( "%s", "%s")>' % (self.id, self.emitentname)
+
 # class User(db.Model):
 #     __tablename__ = 'user'
 #     id = db.Column(db.Integer, primary_key=True)

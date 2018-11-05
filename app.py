@@ -12,13 +12,20 @@ from login import Login
 from model import db, WorkPleace
 from shop import ShopAPI
 from user import User
+from emitentApi import EmitentAPI
+from functools import wraps
+from flask_alembic import Alembic
 app = Flask(__name__, static_url_path="", template_folder="./otchetfrontend/dist", static_folder="./otchetfrontend/dist")
 api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 # db = SQLAlchemy(app)
 db.init_app(app)
+alembic = Alembic()
+alembic.init_app(app)
+
 SESSION_COOKIE_SECURE = True
 REMEMBER_COOKIE_DURATION = 200
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "/#/login"
@@ -81,6 +88,7 @@ api.add_resource(MorningDek, '/morning/')
 api.add_resource(LastReport, '/lastreport/')
 api.add_resource(ShopAPI, '/shop/')
 api.add_resource(User, '/user/')
+api.add_resource(EmitentAPI, '/emitent/')
 toolbar = DebugToolbarExtension(app)
 
 @login_manager.user_loader
