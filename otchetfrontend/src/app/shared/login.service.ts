@@ -42,6 +42,7 @@ export class LoginService {
     this.myRoute.navigate(["report"]);
   }
   getToken() {
+    console.log(localStorage.getItem("rule"))
       return localStorage.getItem("rule")
   }
   isLoggednIn() {
@@ -49,7 +50,17 @@ export class LoginService {
     return this.getToken() !== null;
   }
   checRule(){
+    console.log(localStorage.getItem("rule"))
     if (localStorage.getItem("rule") ==="1") { 
+        return true;
+    } else {
+      return false;
+    }
+  }
+
+  isAdmin(){
+    console.log(localStorage.getItem("rule"))
+    if (localStorage.getItem("rule") ==="SUPERUSER") { 
         return true;
     } else {
       return false;

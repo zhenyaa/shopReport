@@ -1,11 +1,14 @@
-from flask_restful import Resource, Api
-from flask import Flask, request, jsonify
+from flask_restful import Resource
+from flask import request, jsonify
 from model import db, WorkPleace, EveningReport, Inkasation
 from login import current_user
+from additionalFunc import requires_roles
+from flask_login import login_required
 class LastReport(Resource):
-    def get(self):
-        return {'hello': 'world'}
-
+    # def get(self):
+    #     return {'hello': 'world'}
+    @login_required
+    @requires_roles("USER", "SUPERUSER")
     def post(self):
         emptydata = Inkasation(None, None)
         db.session.add(emptydata)

@@ -3,6 +3,8 @@ from flask_login import UserMixin
 from passlib.apps import custom_app_context as pwd_context
 from flask_sqlalchemy import SQLAlchemy
 #from flask_sqlalchemy.hybrid import hybrid_property
+from sqlalchemy import event
+from sqlalchemy.event import listen, listens_for
 from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 # from app import app
 db = SQLAlchemy()
@@ -26,6 +28,7 @@ class WorkPleace(db.Model,UserMixin):
     morningdeskchildren = db.relationship("MorningDesk", backref='workpleace')# родительское отношение
     inkasationchildren = db.relationship("Inkasation", backref='workpleace')  # родительское отношение
     eveningreportchildren = db.relationship("EveningReport", backref='workpleace')  # родительское отношение
+    rulechildren = db.relationship("PlaceRule", backref='workpleace')  # родительское отношение
 
     def __init__(self, namePleace):
         self.namePleace = namePleace
@@ -38,6 +41,19 @@ class WorkPleace(db.Model,UserMixin):
         return pwd_context.verify(password, self.password_hash)
     def __repr__(self):
         return '<Pleace Name %r>' % self.namePleace
+
+class PlaceRule(db.Model,UserMixin):
+    __tablename__ = 'rule'
+    id = db.Column(db.Integer, primary_key=True)
+    rule = db.Column(db.String(120))
+    parent_id = db.Column(db.Integer, db.ForeignKey('workpleace.id'))# children relationship
+
+    def __init__(self, rule, pid):
+        self.rule = rule
+        self.parent_id = pid
+
+    def __repr__(self):
+        return '<Rule %r>' % self.rule
 
 class MorningDesk(db.Model):
     __tablename__ = 'morningdesk'
@@ -103,21 +119,12 @@ class Emitent(db.Model):
     def __repr__(self):
         return '<emi( "%s", "%s")>' % (self.id, self.emitentname)
 
-# class User(db.Model):
-#     __tablename__ = 'user'
-#     id = db.Column(db.Integer, primary_key=True)
-#     namePleace = db.Column(db.String(120))
-#     password_hash = db.Column(db.String(128))
-#
-#     def __init__(self, username, password_hash):
-#         self.username = username
-#         self.password_hash = password_hash
-#
-#     def hash_password(self, password):
-#         self.password_hash = pwd_context.encrypt(password)
-#
-#     def verify_password(self, password):
-#         return pwd_context.verify(password, self.password_hash)
-#
-#     def __repr__(self):
-#         return "<Seller( '%s')>" % (self.username)
+@listens_for(WorkPleace, 'after_insert')
+def generate_license(*args, **kwargs):
+    c = args[2]
+    @event.listens_for(db.session, "after_flush", once=True)
+    def receive_after_flush(session, context):
+        session.add(PlaceRule("USER",c.id ))
+
+
+
