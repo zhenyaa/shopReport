@@ -43,8 +43,8 @@ class Login(Resource):
         resp = jsonify(success=False)
         return resp
 
-    #@login_required
-    #@requires_roles("ALL","USER", "SUPERUSER")
+    @login_required
+    @requires_roles("ALL","USER", "SUPERUSER")
     def delete(self):
         print("LOGOUT G.USER", g)
         logout_user()
