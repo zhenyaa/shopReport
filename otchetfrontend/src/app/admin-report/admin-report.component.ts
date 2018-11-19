@@ -26,7 +26,7 @@ export class AdminReportComponent implements OnInit {
     public title:  Array<object> = [];
     public titleViwe:  Array<object> = [];
     public tdata:  Array<object> = [];
-    displayedColumns: string[] = ['Магазин', 'Касса', 'morningR', 'tsum', 'erd', 'erc','ern','err', 'erdate','test'];
+    displayedColumns: string[] = ['Магазин', 'Касса', 'morningR', 'tsum', 'erd', 'erc','ern','err', 'erdate','test', 'test2', 'test3'];
 // ,'morningR', 'tsum', 'err', 'erc', 'ern'
  adminrequste:adminRequst ={
 	shop:null,
