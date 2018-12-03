@@ -51,56 +51,56 @@
 				  <ng-container matColumnDef="Магазин">
 				    <th mat-header-cell *matHeaderCellDef> Магазин </th>
 				    <td mat-cell *matCellDef="let tdata"> {{tdata.shopname}} </td>
-				    <td mat-footer-cell *matFooterCellDef> Total </td>
+				    <td mat-footer-cell *matFooterCellDef> Магазин </td>
 				  </ng-container>
 
 				  <!-- Cost Column -->
 				  <ng-container matColumnDef="Касса">
 				    <th mat-header-cell *matHeaderCellDef> Касса </th>
 				    <td mat-cell *matCellDef="let tdata"> {{tdata.placename}} </td>
-				    <td mat-footer-cell *matFooterCellDef> name </td>
+				    <td mat-footer-cell *matFooterCellDef> Касса </td>
 				  </ng-container>
 
 				  <ng-container matColumnDef="morningR">
 				    <th mat-header-cell *matHeaderCellDef> Утро розмен </th>
-				    <td mat-cell *matCellDef="let tdata"> {{tdata.morningR}} </td>
-				    <td mat-footer-cell *matFooterCellDef> Total </td>
+				    <td mat-cell *matCellDef="let tdata"> {{tdata.morningR | number: '.2'}} </td>
+				    <td mat-footer-cell *matFooterCellDef> {{getTotalmorningR() | currency}} </td>
 				  </ng-container>
 
 				  <ng-container matColumnDef="tsum">
 				    <th mat-header-cell *matHeaderCellDef> Сумма затрат </th>
-				    <td mat-cell *matCellDef="let tdata"> {{tdata.tsum}} </td>
-				    <td mat-footer-cell *matFooterCellDef> Total </td>
+				    <td mat-cell *matCellDef="let tdata"> {{tdata.tsum | number: '.2'}} </td>
+				    <td mat-footer-cell *matFooterCellDef> {{getTotaltsum() | currency}} </td>
 				  </ng-container>
 
 				  <ng-container matColumnDef="erd">
 				    <th mat-header-cell *matHeaderCellDef> Вечер наличка </th>
-				    <td mat-cell *matCellDef="let tdata"> {{tdata.erd}} </td>
-				    <td mat-footer-cell *matFooterCellDef> Total </td>
+				    <td mat-cell *matCellDef="let tdata"> {{tdata.erd | number: '.2'}} </td>
+				    <td mat-footer-cell *matFooterCellDef> {{getTotalerd() | currency}} </td>
 				  </ng-container>
 
 				  <ng-container matColumnDef="erc">
 				    <th mat-header-cell *matHeaderCellDef> Вечер компютер </th>
-				    <td mat-cell *matCellDef="let tdata"> {{tdata.erc}} </td>
-				    <td mat-footer-cell *matFooterCellDef> Total </td>
+				    <td mat-cell *matCellDef="let tdata"> {{tdata.erc | number: '.2'}} </td>
+				    <td mat-footer-cell *matFooterCellDef> {{getTotalerc() | currency}} </td>
 				  </ng-container>
 
 				  <ng-container matColumnDef="ern">
 				    <th mat-header-cell *matHeaderCellDef> Вечер безналичный </th>
-				    <td mat-cell *matCellDef="let tdata"> {{tdata.ern}} </td>
-				    <td mat-footer-cell *matFooterCellDef> Total </td>
+				    <td mat-cell *matCellDef="let tdata"> {{tdata.ern | number: '.2'}} </td>
+				    <td mat-footer-cell *matFooterCellDef> {{getTotalern() | currency}} </td>
 				  </ng-container>
 
 				  <ng-container matColumnDef="err">
 				    <th mat-header-cell *matHeaderCellDef> Вечер розмен </th>
-				    <td mat-cell *matCellDef="let tdata"> {{tdata.err}} </td>
-				    <td mat-footer-cell *matFooterCellDef> Total </td>
+				    <td mat-cell *matCellDef="let tdata"> {{tdata.err | number: '.2'}} </td>
+				    <td mat-footer-cell *matFooterCellDef> {{getTotalerr() | currency}} </td>
 				  </ng-container>
 
 				  <ng-container matColumnDef="erdate">
 				    <th mat-header-cell *matHeaderCellDef> Дата </th>
 				    <td mat-cell *matCellDef="let tdata"> {{tdata.erdate | date:'d.M.yyyy'}} </td>
-				    <td mat-footer-cell *matFooterCellDef> Total </td>
+				    <td mat-footer-cell *matFooterCellDef> Дата </td>
 				  </ng-container>
 
 			<!-- 	  <ng-container matColumnDef="test">
@@ -110,21 +110,21 @@
 				  </ng-container> -->
 
 				  <ng-container matColumnDef="test">
-				    <th mat-header-cell *matHeaderCellDef> Сколько денег в кассе </th>
-				    <td mat-cell *matCellDef="let tdata"> {{tdata.morningR + tdata.erc}} </td>
-				    <td mat-footer-cell *matFooterCellDef> Total </td>
+				    <th mat-header-cell *matHeaderCellDef> новые ур+ВК-Вб </th>
+				    <td mat-cell *matCellDef="let tdata"> {{tdata.morningR + tdata.erc - tdata.ern | number: '.2'}} </td>
+				    <td mat-footer-cell *matFooterCellDef> {{getTotalTest() | currency}} </td>
 				  </ng-container>
 
 				  	  <ng-container matColumnDef="test2">
 				    <th mat-header-cell *matHeaderCellDef> сколько денег - затраты </th>
-				    <td mat-cell *matCellDef="let tdata"> {{(tdata.morningR + tdata.erc) - tdata.tsum }} </td>
+				    <td mat-cell *matCellDef="let tdata"> {{(tdata.morningR + tdata.erc) - tdata.tsum | number: '.2'}} </td>
 				    <td mat-footer-cell *matFooterCellDef> Total </td>
 				  </ng-container>
 
 				   	  <ng-container matColumnDef="test3">
-				    <th mat-header-cell *matHeaderCellDef> сколько денег - затраты - реальная наличка = разница </th>
-				    <td mat-cell *matCellDef="let tdata"> {{((tdata.morningR + tdata.erc) - tdata.tsum) - tdata.erd }} </td>
-				    <td mat-footer-cell *matFooterCellDef> Total </td>
+				    <th mat-header-cell *matHeaderCellDef> сд-з-рд-б</th>
+				    <td mat-cell *matCellDef="let tdata"> {{((tdata.morningR + tdata.erc) - tdata.tsum) - tdata.erd - tdata.ern | number: '.2' }} </td>
+				    <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
 				  </ng-container>
 
 				<!--    <ng-container matColumnDef="erdate">

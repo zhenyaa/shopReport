@@ -4,11 +4,11 @@ import {TooltipPosition} from '@angular/material';
 import {APIService} from '../api.service';
 import {MyfilterPipe} from './myfilter.pipe'
 interface adminRequst{
-	shop:string,
-	shopDesk:number,
+  shop:string,
+  shopDesk:number,
   inctitle:string,
-	dateStart:string,
-	dateEnd:string,
+  dateStart:string,
+  dateEnd:string,
 };
 interface adminDate{
   dateStart:Date,
@@ -29,11 +29,11 @@ export class AdminReportComponent implements OnInit {
     displayedColumns: string[] = ['Магазин', 'Касса', 'morningR', 'tsum', 'erd', 'erc','ern','err', 'erdate','test', 'test2', 'test3'];
 // ,'morningR', 'tsum', 'err', 'erc', 'ern'
  adminrequste:adminRequst ={
-	shop:null,
-	shopDesk:null,
+  shop:null,
+  shopDesk:null,
   inctitle:null,
-	dateStart:null,
-	dateEnd:null,
+  dateStart:null,
+  dateEnd:null,
 };
  admindate:adminDate ={
   dateStart:new Date(),
@@ -49,7 +49,7 @@ filter1 = {'shopname': 'apteka1'}
   }
 
   sendRequstAdmin(){
-  	console.log(this.adminrequste);
+    console.log(this.adminrequste);
     this.adminrequste.dateStart=this.admindate.dateStart.toDateString();
     this.adminrequste.dateEnd=this.admindate.dateEnd.toDateString();
     this.apiService.getAdminReport(this.adminrequste).subscribe((data:  Array<object>) => {
@@ -99,4 +99,34 @@ filter1 = {'shopname': 'apteka1'}
   xerq(t) {
     console.log('xerq' ,t);
   }
+
+   getTotalCost() {
+    //<td mat-cell *matCellDef="let tdata"> {{((tdata.morningR + tdata.erc) - tdata.tsum) - tdata.erd - tdata.ern | number: '.2' }} </td>
+    // return this.tdata.map(t => t).reduce((acc, value) => acc + value.morningR + value.erc- value.tsum-value.erd- value.ern, 0);
+    return this.tdata.reduce((acc, value) => acc + value['morningR']+ value['erc'] - value['tsum']- value['erd']- value['ern'], 0);
+  }
+
+  getTotalmorningR(){
+        return this.tdata.reduce((acc, value) => acc + value['morningR'], 0);
+  }
+  getTotaltsum(){
+            return this.tdata.reduce((acc, value) => acc + value['tsum'], 0);
+  }
+
+  getTotalerd(){
+                return this.tdata.reduce((acc, value) => acc + value['erd'], 0);
+  }
+  getTotalerc(){
+                    return this.tdata.reduce((acc, value) => acc + value['erc'], 0);
+  }
+  getTotalern(){
+    return this.tdata.reduce((acc, value) => acc + value['ern'], 0);
+  }
+  getTotalerr(){
+    return this.tdata.reduce((acc, value) => acc + value['err'], 0);
+  }
+  getTotalTest(){
+    return this.tdata.reduce((acc, value) => acc + value['morningR']+ value['erc'] - value['ern'], 0);
+  }
 }
+
