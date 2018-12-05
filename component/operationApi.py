@@ -25,7 +25,7 @@ class Operation(Resource):
     @requires_roles("SUPERUSER", "USER")
     def post(self):
         json_data = request.get_json(force= True)
-        Deskdata = Inkasation(json_data["sum"], json_data["name"], datetime.date.today())
+        Deskdata = Inkasation(json_data["sum"], json_data["name"], date.today())
         db.session.add(Deskdata)
         user1 = db.session.query(WorkPleace).filter_by(namePleace=current_user.namePleace).first()
         user1.inkasationchildren.append(Deskdata)
