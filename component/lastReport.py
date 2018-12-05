@@ -12,7 +12,7 @@ class LastReport(Resource):
     @login_required
     @requires_roles("USER", "SUPERUSER")
     def post(self):
-        emptydata = Inkasation(None, None)
+        emptydata = Inkasation(None, None, datetime.date.today())
         db.session.add(emptydata)
         json_data = request.get_json(force= True)
         print(json_data)
