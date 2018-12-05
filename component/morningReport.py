@@ -17,7 +17,7 @@ class MorningDek(Resource):
         db.session.add(emptydata)
         json_data = request.get_json(force= True)
         data = json_data['kashDesk']
-        Deskdata = MorningDesk(desksumm= data)
+        Deskdata = MorningDesk(desksumm= data, morningdate = datetime.date.today())
         if db.session.query(MorningDesk.morningdate, MorningDesk.parent_id).filter_by(morningdate=datetime.date.today()).filter_by(parent_id=current_user.id).one_or_none():
              return json.dumps({'success':False}), 409, {'ContentType':'application/json'}
         db.session.add(Deskdata)

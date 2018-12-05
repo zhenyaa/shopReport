@@ -16,7 +16,7 @@ class LastReport(Resource):
         db.session.add(emptydata)
         json_data = request.get_json(force= True)
         print(json_data)
-        Deskdata = EveningReport(json_data["computerDesk"],json_data["desk"],json_data["liveMany"],json_data["notMany"] )
+        Deskdata = EveningReport(json_data["computerDesk"],json_data["desk"],json_data["liveMany"],json_data["notMany"],datetime.date.today())
         if db.session.query(EveningReport.reportdate, EveningReport.parent_id).filter_by(reportdate=datetime.date.today()).filter_by(parent_id=current_user.id).one_or_none():
             return json.dumps({'success': False}), 409, {'ContentType': 'application/json'}
         db.session.add(Deskdata)

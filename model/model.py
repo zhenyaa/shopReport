@@ -77,9 +77,10 @@ class Inkasation(db.Model):
     transactiondate = db.Column(db.Date, default=datetime.date.today())
 
     parent_id = db.Column(db.Integer, db.ForeignKey('workpleace.id'))  # children relationship
-    def __init__(self,transactionSumm,title  ):
+    def __init__(self,transactionSumm,title ,transactiondate ):
         self.transactionSumm = transactionSumm
         self.title = title
+        self.transactiondate = transactiondate
 
     def __repr__(self):
         return '<transaction summ( "%s", "%s")>' % (self.transactionSumm, self.title)
@@ -95,11 +96,12 @@ class EveningReport(db.Model):
 
     parent_id = db.Column(db.Integer, db.ForeignKey('workpleace.id'))  # children relationship
 
-    def __init__(self,computerdesk, desk, rozmen, nocashtransaction):
+    def __init__(self,computerdesk, desk, rozmen, nocashtransaction, reportdate):
         self.computerdesk = computerdesk
         self.desk = desk
         self.rozmen = rozmen
         self.nocashtransaction = nocashtransaction
+        self.reportdate = reportdate
 
     @hybrid_property
     def isEmpty(self):
