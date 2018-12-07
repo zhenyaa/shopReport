@@ -11,6 +11,8 @@ import { HttpModule } from '@angular/http';
 import{RouteModule} from  './route/route.module'
 import{RouteRoutingModule} from  './route/route-routing.module';
 import { MorningComponent } from './morning/morning.component'
+// import {MatNativeDateModule} from '@angular/material';
+// import {MatChipsModule} from '@angular/material/chips';
 import {
   //MatToolbarModule,
   MatAutocompleteModule,
@@ -44,6 +46,7 @@ import {
   MatTableModule,
   MatTabsModule,
   MatTooltipModule,
+  
 
 } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -102,7 +105,8 @@ import { LOCALE_ID } from '@angular/core';
     MatTableModule,
     CdkTableModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatChipsModule
   ],
     exports: [
     RouteRoutingModule,

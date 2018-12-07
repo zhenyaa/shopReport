@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Renderer2} from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {TooltipPosition} from '@angular/material';
 import {APIService} from '../api.service';
@@ -17,7 +17,7 @@ interface adminDate{
 @Component({
   selector: 'app-admin-report',
   templateUrl: './admin-report.component.html',
-  styleUrls: ['./admin-report.component.css']
+  styleUrls: ['./admin-report.component.css'],
 })
 export class AdminReportComponent implements OnInit {
     public  shops:  Array<object> = [];
@@ -26,6 +26,7 @@ export class AdminReportComponent implements OnInit {
     public title:  Array<object> = [];
     public titleViwe:  Array<object> = [];
     public tdata:  Array<object> = [];
+    public executeDate:  Array<object> = [];
     displayedColumns: string[] = ['Магазин', 'Касса', 'morningR', 'tsum', 'erd', 'erc','ern','err', 'erdate','test', 'test2', 'test3'];
 // ,'morningR', 'tsum', 'err', 'erc', 'ern'
  adminrequste:adminRequst ={
@@ -40,13 +41,16 @@ export class AdminReportComponent implements OnInit {
   dateEnd:new Date(),
 };
 filter1 = {'shopname': 'apteka1'}
-  constructor(public  apiService:  APIService) { }
+
+  constructor(public  apiService:  APIService, private   renderer:Renderer2) { }
 
   ngOnInit() {
     this.getShop();
     this.getWorkPlace();
     this.getIncTitle();
+    this.getExecuteDate();
   }
+
 
   sendRequstAdmin(){
     console.log(this.adminrequste);
@@ -65,6 +69,20 @@ filter1 = {'shopname': 'apteka1'}
       });
   }
 
+  getExecuteDate(){
+    this.apiService.getExecuteMoneyDate().subscribe((data:  Array<object>) => {
+           this.executeDate  = data;
+           console.log('its execute date',data);
+      });
+  }
+
+  dateClass = (d: Date) => {
+    const date = d.getDate();
+
+    // Highlight the 1st and 20th day of each month.
+    return (date === 1 || date === 20) ? 'example-custom-date-class' : undefined;
+  }
+
   getShop(){
       this.apiService.getShop().subscribe((data:  Array<object>) => {
            this.shops  = data;
@@ -76,6 +94,16 @@ filter1 = {'shopname': 'apteka1'}
        return test["shopname"] === $event;
     });
 
+  }
+
+  coloredRow(event){
+    console.log(this.executeDate["Idate"])
+    if (this.executeDate.map(t => t["Idate"]).includes(event)){
+      console.log('2 param ',this.executeDate,event )
+      return true;
+    }
+    else{
+    return false;}
   }
 
    filterTitle($event){

@@ -10,7 +10,7 @@ class Development(Config):
     SECRET_KEY = 'MySecretKey'
     SESSION_TYPE = 'filesystem'
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'mysql://root:12358134@localhost/report'
+    SQLALCHEMY_DATABASE_URI = 'mysql://root:12358134@localhost/test1'
     USE_RELOADER = True
     USE_DEBUGGER = True
 

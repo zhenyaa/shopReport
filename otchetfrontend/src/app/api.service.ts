@@ -31,6 +31,10 @@ getEmitentAll(){
     return  this.httpClient.get(`/emitent`);
 }
 
+getExecuteMoneyDate(){
+    return  this.httpClient.get(`/executemoney`);
+}
+
 createEmitent(username){
     console.log('test',username)
     return  this.httpClient.post(`/emitent/`,username, ParseHeaders);

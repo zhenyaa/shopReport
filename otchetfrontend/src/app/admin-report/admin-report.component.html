@@ -30,7 +30,7 @@
 			<mat-form-field>
 			  <input matInput [(ngModel)]="admindate.dateStart" [matDatepicker]="picker1" placeholder="Начало">
 			  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-			  <mat-datepicker #picker1></mat-datepicker>
+			  <mat-datepicker  #picker1 ></mat-datepicker>
 			</mat-form-field>
 			
 			<mat-form-field>
@@ -99,7 +99,7 @@
 
 				  <ng-container matColumnDef="erdate">
 				    <th mat-header-cell *matHeaderCellDef> Дата </th>
-				    <td mat-cell *matCellDef="let tdata"> {{tdata.erdate | date:'d.M.yyyy'}} </td>
+				    <td mat-cell  [ngClass]="{'first': coloredRow(tdata.erdate)}" *matCellDef="let tdata"> {{tdata.erdate | date:'d.M.yyyy'}} </td>
 				    <td mat-footer-cell *matFooterCellDef> Дата </td>
 				  </ng-container>
 

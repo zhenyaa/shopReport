@@ -10,6 +10,7 @@ from model.model import db, WorkPleace
 from component.shop import ShopAPI
 from component.user import User
 from component.emitentApi import EmitentAPI
+from component.directorExecuteMoney import ExecuteMoney
 from flask_alembic import Alembic
 import config
 import pymysql
@@ -55,7 +56,7 @@ api.add_resource(LastReport, '/lastreport/')
 api.add_resource(ShopAPI, '/shop/')
 api.add_resource(User, '/user/')
 api.add_resource(EmitentAPI, '/emitent/')
-
+api.add_resource(ExecuteMoney, '/executemoney/')
 
 @login_manager.user_loader
 def user_loader(username):

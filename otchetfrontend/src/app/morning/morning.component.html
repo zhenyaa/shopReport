@@ -1,9 +1,21 @@
+<!-- <div [ngClass]="{'santa-claus': true}"></div> -->
 <mat-card class="morning-component">
 	<mat-card-title> Утренная касса</mat-card-title>
 	<mat-card-content>
-		<input matInput [(ngModel)]= "kash.kashDesk" placeholder="Утренная касса" value="0">
+		<!-- <div [ngClass]="{'santa-claus': !kashDeskv?.errors?.pattern && !kashDeskv?.errors?.required }"></div> -->
+
+		<input matInput [(ngModel)]= "kash.kashDesk" name="fullName" [formControl]="kashDeskv" placeholder="Утренная касса" value="">
 	</mat-card-content>
-	<mat-card-actions>
-		 <button onclick="M.toast({html: 'Добавленно'})" mat-raised-button color="primary" (click)="sendCash()">Отправить</button>
+	<mat-card-actions >
+			<mat-chip-list class="chip-size">
+				  <mat-chip  *ngIf="kashDeskv?.errors?.pattern">Введите значение</mat-chip>
+				  <mat-chip  *ngIf="kashDeskv?.errors?.required">Пустое поле</mat-chip>
+				  <!-- <mat-chip  *ngIf="kashDeskv?.errors?.minLength">длинна</mat-chip> -->
+			</mat-chip-list>
+		 <button [disabled]="kashDeskv?.errors?.pattern || kashDeskv?.errors?.required || kashDeskv?.errors?.minLength"  onclick="M.toast({html: 'Добавленно'})" mat-raised-button color="primary" (click)="sendCash()">Отправить</button>
 	</mat-card-actions>
 </mat-card>
+
+<!-- <div *ngIf="uname.errors?.pattern">
+     User name not valid.
+</div>  -->

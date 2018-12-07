@@ -3,23 +3,43 @@
 	<mat-card-content>
 			<form class="example-form">
 		  <mat-form-field class="example-full-width">
-		    <input matInput [(ngModel)]= "lReport.desk" placeholder="Касса" name="Desk" value="00">
+		    <input matInput [(ngModel)]= "lReport.desk"  [formControl]="Ldesk" placeholder="Касса" name="Desk" value="00">
 		  </mat-form-field>
 
 		  <mat-form-field class="example-full-width">
-		    <input matInput [(ngModel)]= "lReport.computerDesk" placeholder="Касса по компютеру" name="ComputerDesk" value="00">
+		    <input matInput [(ngModel)]= "lReport.computerDesk" [formControl]="LcDesk" placeholder="Касса по компютеру" name="ComputerDesk" value="00">
 		  </mat-form-field>
 
 		   <mat-form-field class="example-full-width">
-		    <input matInput [(ngModel)]= "lReport.notMany" placeholder="Безналичный" name="NotMany" value="000">
+		    <input matInput [(ngModel)]= "lReport.notMany" [formControl]="LnMoney"  placeholder="Безналичный" name="NotMany" value="000">
 		  </mat-form-field>
 
 		   <mat-form-field class="example-full-width">
-		    <input matInput [(ngModel)]= "lReport.liveMany" placeholder="Остаток Размен" name="LiveMany" value="450">
+		    <input matInput [(ngModel)]= "lReport.liveMany" [formControl]="LlMoney"  placeholder="Остаток Размен" name="LiveMany" value="450">
 		  </mat-form-field>
 		</form>
 	</mat-card-content>
 	<mat-card-actions>
-		 <button onclick="M.toast({html: 'Добавленно'})" mat-raised-button color="primary" (click)="sendReport()">Отправить</button>
+		 <button [disabled]="" onclick="M.toast({html: 'Добавленно'})" mat-raised-button color="primary" (click)="sendReport()">Отправить</button>
 	</mat-card-actions>
+			<mat-chip-list>
+					 <mat-chip  *ngIf="Ldesk?.errors?.pattern">Введите значение</mat-chip>
+				  <mat-chip  *ngIf="Ldesk?.errors?.required">Пустое поле</mat-chip>
+				   <mat-chip  *ngIf="LcDesk?.errors?.pattern">Введите значение</mat-chip>
+				  <mat-chip  *ngIf="LcDesk?.errors?.required">Пустое поле</mat-chip>
+				   <mat-chip  *ngIf="LnMoney?.errors?.pattern">Введите значение</mat-chip>
+				  <mat-chip  *ngIf="LnMoney?.errors?.required">Пустое поле</mat-chip>
+				   <mat-chip  *ngIf="LlMoney?.errors?.pattern">Введите значение</mat-chip>
+				  <mat-chip  *ngIf="LlMoney?.errors?.required">Пустое поле</mat-chip>
+
+
+				 <!--  <mat-chip *ngIf="udesk.errors?.pattern">Неверные данные, поле касса </mat-chip>
+				  <mat-chip *ngIf="ucomd.errors?.pattern">Неверные данные, поле касса компютер</mat-chip>
+				  <mat-chip *ngIf="ulma.errors?.pattern">Неверные данные, поле остаток</mat-chip>
+				  <mat-chip *ngIf="unotm.errors?.pattern">Неверные данные, поле безнал</mat-chip>
+				  <mat-chip *ngIf="!lReport.desk.length">Введите значение</mat-chip>
+				  <mat-chip *ngIf="!lReport.computerDesk.length">Введите значение</mat-chip>
+				  <mat-chip *ngIf="!lReport.notMany.length">Введите значение</mat-chip>
+				  <mat-chip *ngIf="!lReport.liveMany.length">Введите значение</mat-chip> -->
+			</mat-chip-list>
 </mat-card>
