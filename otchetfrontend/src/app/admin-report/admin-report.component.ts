@@ -57,7 +57,7 @@ filter1 = {'shopname': 'apteka1'}
     this.adminrequste.dateStart=this.admindate.dateStart.toDateString();
     this.adminrequste.dateEnd=this.admindate.dateEnd.toDateString();
     this.apiService.getAdminReport(this.adminrequste).subscribe((data:  Array<object>) => {
-      this.tdata = data
+      this.tdata = data.sort((a,b) => new Date(a["erdate"]).getDate() - new Date(b["erdate"]).getDate())
     console.log(data);
 });
   }
@@ -120,7 +120,7 @@ filter1 = {'shopname': 'apteka1'}
            console.log(data);
            console.log('its user oll',this.userShop);
            console.log('its user oll',this.shops);
-           
+
       });
   }
 
@@ -157,4 +157,3 @@ filter1 = {'shopname': 'apteka1'}
     return this.tdata.reduce((acc, value) => acc + value['morningR']+ value['erc'] - value['ern'], 0);
   }
 }
-
