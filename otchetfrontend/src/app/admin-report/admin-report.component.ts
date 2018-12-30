@@ -27,7 +27,7 @@ export class AdminReportComponent implements OnInit {
     public titleViwe:  Array<object> = [];
     public tdata:  Array<object> = [];
     public executeDate:  Array<object> = [];
-    displayedColumns: string[] = ['Магазин', 'Касса', 'morningR', 'tsum', 'erd', 'erc','ern','err', 'erdate','test', 'test2', 'test3'];
+    displayedColumns: string[] = ['Магазин', 'Касса', 'morningR', 'tsum', 'erd', 'erc','ern','err', 'erdate','test', 'test2', 'test3', 'but'];
 // ,'morningR', 'tsum', 'err', 'erc', 'ern'
  adminrequste:adminRequst ={
   shop:null,
@@ -58,21 +58,21 @@ filter1 = {'shopname': 'apteka1'}
     this.adminrequste.dateEnd=this.admindate.dateEnd.toDateString();
     this.apiService.getAdminReport(this.adminrequste).subscribe((data:  Array<object>) => {
       this.tdata = data.sort((a,b) => new Date(a["erdate"]).getDate() - new Date(b["erdate"]).getDate())
-    console.log(data);
+    console.log('its for cheked',data);
 });
   }
 
   getIncTitle(){
     this.apiService.getOperationAll().subscribe((data:  Array<object>) => {
            this.title  =  this.titleViwe =  data;
-           console.log('its title',data);
+           //console.log('its title',data);
       });
   }
 
   getExecuteDate(){
     this.apiService.getExecuteMoneyDate().subscribe((data:  Array<object>) => {
            this.executeDate  = data;
-           console.log('its execute date',data);
+           //console.log('its execute date',data);
       });
   }
 
@@ -97,13 +97,16 @@ filter1 = {'shopname': 'apteka1'}
   }
 
   coloredRow(event){
-    console.log(this.executeDate["Idate"])
+    //console.log(this.executeDate["Idate"])
     if (this.executeDate.map(t => t["Idate"]).includes(event)){
-      console.log('2 param ',this.executeDate,event )
+     //console.log('2 param ',this.executeDate,event )
       return true;
     }
     else{
     return false;}
+  }
+  watchchange(row){
+    console.log("work chaked",row);
   }
 
    filterTitle($event){
@@ -155,5 +158,26 @@ filter1 = {'shopname': 'apteka1'}
   }
   getTotalTest(){
     return this.tdata.reduce((acc, value) => acc + value['morningR']+ value['erc'] - value['ern'], 0);
+  }
+
+  adminresetLabel(row){
+ let mask = row;
+    mask["Mstate"] = false;
+    let foundIndex = this.tdata.findIndex(x => x['Mid'] === row['Mid'])
+    this.tdata[foundIndex] = mask;
+
+    this.apiService.addAdminLabel({id:row["Mid"], state: false}).subscribe((data:  Array<object>) => {
+           console.log(data);
+      });
+  }
+  adminaddLabel(row){
+    let mask = row;
+    mask["Mstate"] = true;
+    let foundIndex = this.tdata.findIndex(x => x['Mid'] === row['Mid'])
+    this.tdata[foundIndex] = mask;
+      this.apiService.addAdminLabel({id:row["Mid"], state: true}).subscribe((data:  Array<object>) => {
+           console.log(data);
+      });
+
   }
 }

@@ -62,7 +62,7 @@ class MorningDesk(db.Model):
     morningdate = db.Column(db.Date, default=datetime.date.today())
 
     parent_id = db.Column(db.Integer, db.ForeignKey('workpleace.id'))# children relationship
-
+    suser_label = db.Column(db.Boolean, default=False, nullable=False)
     @hybrid_property
     def isEmpty(self):
         return True if self.morningdate == datetime.date.today() else False

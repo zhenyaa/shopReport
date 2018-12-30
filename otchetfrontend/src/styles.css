@@ -4,11 +4,11 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 body{
 	background-color: #76D7C4;
-/*	background-image: url("/christmas-ornament.png");
-	background-size: cover;*/
+	background-image: url("/christmas-ornament.png");
+	background-size: cover;
 },
 .app-root{
 	background-color: #808080;	
-/*	background-image: url("/christmas-ornament.png");
-	background-size: 300px 100px;*/
+	background-image: url("/christmas-ornament.png");
+	background-size: 300px 100px;
 }

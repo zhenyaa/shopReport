@@ -13,6 +13,7 @@ import{RouteRoutingModule} from  './route/route-routing.module';
 import { MorningComponent } from './morning/morning.component'
 // import {MatNativeDateModule} from '@angular/material';
 // import {MatChipsModule} from '@angular/material/chips';
+
 import {
   //MatToolbarModule,
   MatAutocompleteModule,
@@ -106,7 +107,8 @@ import { LOCALE_ID } from '@angular/core';
     CdkTableModule,
     MatIconModule,
     MatToolbarModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCheckboxModule
   ],
     exports: [
     RouteRoutingModule,
