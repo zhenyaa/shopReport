@@ -59,7 +59,13 @@ filter1 = {'shopname': 'apteka1'}
     this.apiService.getAdminReport(this.adminrequste).subscribe((data:  Array<object>) => {
       this.tdata = data.sort((a,b) => new Date(a["erdate"]).getDate() - new Date(b["erdate"]).getDate())
     console.log('its for cheked',data);
+},
+err => {
+  if (err.status ==401){
+      // console.log("status 401 error autentification")
+  }
 });
+// err=> console.log("error", err.status));
   }
 
   getIncTitle(){

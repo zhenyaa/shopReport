@@ -10,6 +10,7 @@ export class MenuComponent implements OnInit {
   constructor(public auth: LoginService) { }
 
   ngOnInit() {
+  	this.auth.chekLogin();
   }
 showFiller = false;
 mobileQuery: MediaQueryList;
