@@ -18,13 +18,21 @@ import { map } from 'rxjs/operators';
 export class LoginService {
  constructor(private http: Http, private myRoute: Router, private httpClient:HttpClient ) { }
 
-  // loginUsers(data) {
-  // 	console.log("test POST",data)
-  //   let headers = new Headers({ 'Content-Type': 'application/json' });
-  //   let options = new RequestOptions({ headers: headers });
-  //   let body = JSON.stringify(data);
-  //   return this.http.post('/index', body, options ).map((res: Response) => res.json());
-  //  }
+ chekLogin(){
+   console.log("work check login")
+   return this.http.get('/clog').subscribe((data) => {
+      },
+      err => {
+        if (err.status ==401){
+          // console.log("un autorized");
+          this.logout();
+        };
+        //  if (err.status ==301){
+        //   // console.log("un autorized");
+        //   this.logout();
+        // };
+      });
+ }
 
    Login(user){
 	console.log('test servise',user)

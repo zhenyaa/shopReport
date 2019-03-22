@@ -1,6 +1,6 @@
-from flask import Flask, render_template, g, redirect, url_for, current_app
+from flask import Flask, render_template, g, redirect, url_for, current_app, jsonify
 from flask_restful import  Api
-from flask_login import LoginManager, current_user
+from flask_login import LoginManager, current_user, login_required
 from component.operationApi import Operation
 from component.morningReport import MorningDek
 from component.lastReport import LastReport
@@ -12,6 +12,7 @@ from component.user import User
 from component.emitentApi import EmitentAPI
 from component.directorExecuteMoney import ExecuteMoney
 from component.superUserLabel import SuserLabel
+from component.checkLogin import LoginCheked
 from flask_alembic import Alembic
 import config
 import pymysql
@@ -35,9 +36,8 @@ login_manager.session_protection = 'strong'
 
 @login_manager.unauthorized_handler
 def unauthorized():
-    print(current_user, current_app)
-    print("error login, access deny")
-    return redirect(url_for('index'))
+    # print("error login, access deny")
+    return "False", 401
 
 @app.before_request
 def before_request():
@@ -48,7 +48,13 @@ def before_request():
 def index():
     return render_template("index.html")
 
+# @login_required
+# @app.route('/clog' )
+# def chekLogin():
+#     return "True", 200
+
 api.add_resource(Login, '/login/')
+api.add_resource(LoginCheked, '/clog/')
 
 api.add_resource(AdminReport, '/admin/')
 api.add_resource(Operation, '/operation/')
