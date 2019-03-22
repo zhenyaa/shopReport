@@ -3,6 +3,6 @@
 
 ::ng-deep body{
   	background-color: #76D7C4;
-	/*background-image: url("/christmas-ornament.png");*/
+	background-image: url("../christmas-ornament.png");
 	/*background-size: cover;*/
 }

@@ -9,7 +9,7 @@ class AdminReport(Resource):
     @login_required
     @requires_roles("SUPERUSER")
     def get(self):
-        query1 = db.session.query(Shop.shopname,WorkPleace.namePleace, MorningDesk.desksumm, db.func.sum(Inkasation.transactionSumm),EveningReport.desk, EveningReport.computerdesk, EveningReport.nocashtransaction, EveningReport.rozmen, EveningReport.reportdate)\
+        query1 = db.session.query(Shop.shopname,WorkPleace.namePleace,MorningDesk.id,MorningDesk.suser_label , MorningDesk.desksumm, db.func.sum(Inkasation.transactionSumm),EveningReport.desk, EveningReport.computerdesk, EveningReport.nocashtransaction, EveningReport.rozmen, EveningReport.reportdate)\
             .join(WorkPleace)\
             .join(MorningDesk)\
             .outerjoin(Inkasation )\
@@ -27,7 +27,7 @@ class AdminReport(Resource):
              query1 = query1.filter(EveningReport.reportdate.between(date1, date2))
         if request.args.get("inctitle") != "null":
              query1 = query1.filter(Inkasation.title == (request.args.get("inctitle")))
-        title = ("shopname", "placename", "morningR", "tsum", "erd", "erc", "ern", "err", "erdate")
+        title = ("shopname", "placename","Mid","Mstate", "morningR", "tsum", "erd", "erc", "ern", "err", "erdate")
         result = list(dict(zip(title, x)) for x  in query1.all())
         return jsonify(result)
 

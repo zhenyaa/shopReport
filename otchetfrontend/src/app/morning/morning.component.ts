@@ -18,15 +18,15 @@ export class MorningComponent implements OnInit {
 kash:Morning={
    kashDesk:null
 }
-private kashDeskv: FormControl;
-// unamePattern = "^[0-9]+(\.[0-9]{1,2})?$"; 
+public kashDeskv: FormControl;
+// unamePattern = "^[0-9]+(\.[0-9]{1,2})?$";
   constructor(private  apiService:  APIService, private myRoute: Router) { }
 test(v) {
   console.log(v);
 }
   ngOnInit() {
  this.kashDeskv = new FormControl('', [
-    Validators.required, 
+    Validators.required,
     Validators.minLength(1),
     Validators.pattern("^[0-9]+(\.[0-9]{1,2})?$")
   ]);
@@ -42,7 +42,7 @@ test(v) {
   }
 
   // kashDeskv = new FormControl('',  [
-  //   Validators.required, 
+  //   Validators.required,
   //   Validators.minLength(3),
   //   Validators.pattern("^[0-9]+(\.[0-9]{1,2})?$")
 

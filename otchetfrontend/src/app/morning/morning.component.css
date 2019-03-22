@@ -7,12 +7,12 @@ mat-card{
 	 margin-left: 25%;
 }
 
-.santa-claus{
+/* .santa-claus{
 	background-image: url("santa_claus.png");
 	background-size: contain;
 	width: 300px;
 	height: 300px;
-}
+} */
 .chip-size mat-chip{
 	width: 100%;
 	background-color: red;

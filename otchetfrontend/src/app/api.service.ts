@@ -86,6 +86,12 @@ Login(user){
     return  this.httpClient.post(`/login/`,user, ParseHeaders);
 }
 
+addAdminLabel(row){
+    console.log(row, "add Label in service")
+    return  this.httpClient.put(`/ladmin/`,row, ParseHeaders);
+
+}
+
 }
 
 

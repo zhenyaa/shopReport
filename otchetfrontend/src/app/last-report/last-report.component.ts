@@ -21,31 +21,31 @@ export class LastReportComponent implements OnInit {
 		liveMany:null,
 	}
 
-  private Ldesk: FormControl;
-  private LcDesk: FormControl;
-  private LnMoney: FormControl;
-  private LlMoney: FormControl;
-  // unamePattern = "^[0-9]+(\.[0-9]{1,2})?$"; 
+  public Ldesk: FormControl;
+  public LcDesk: FormControl;
+  public LnMoney: FormControl;
+  public LlMoney: FormControl;
+  // unamePattern = "^[0-9]+(\.[0-9]{1,2})?$";
   constructor(public apiService:  APIService, public myRoute: Router) { }
 
   ngOnInit() {
     this.Ldesk = new FormControl('', [
-    Validators.required, 
+    Validators.required,
     Validators.minLength(1),
     Validators.pattern("^[0-9]+(\.[0-9]{1,2})?$")
   ]);
     this.LcDesk = new FormControl('', [
-    Validators.required, 
+    Validators.required,
     Validators.minLength(1),
     Validators.pattern("^[0-9]+(\.[0-9]{1,2})?$")
   ]);
     this.LnMoney = new FormControl('', [
-    Validators.required, 
+    Validators.required,
     Validators.minLength(1),
     Validators.pattern("^[0-9]+(\.[0-9]{1,2})?$")
   ]);
     this.LlMoney = new FormControl('', [
-    Validators.required, 
+    Validators.required,
     Validators.minLength(1),
     Validators.pattern("^[0-9]+(\.[0-9]{1,2})?$")
   ]);
