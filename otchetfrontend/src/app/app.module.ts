@@ -11,6 +11,7 @@ import { HttpModule } from '@angular/http';
 import{RouteModule} from  './route/route.module'
 import{RouteRoutingModule} from  './route/route-routing.module';
 import { MorningComponent } from './morning/morning.component'
+import {ECommerceModule} from './e-commerce/e-commerce.module'
 // import {MatNativeDateModule} from '@angular/material';
 // import {MatChipsModule} from '@angular/material/chips';
 
@@ -67,6 +68,7 @@ import {AuthGuard} from './auth.guard';
 import { AdminEmitentComponent } from './admin-emitent/admin-emitent.component';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { LOCALE_ID } from '@angular/core';
+import { BarChartComponent } from './bar-chart/bar-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,7 +82,8 @@ import { LOCALE_ID } from '@angular/core';
     AdminShopComponent,
     AdminUserComponent,
     MyfilterPipe,
-    AdminEmitentComponent
+    AdminEmitentComponent,
+    BarChartComponent
   ],
   imports: [
     HttpClientModule,
@@ -108,7 +111,8 @@ import { LOCALE_ID } from '@angular/core';
     MatIconModule,
     MatToolbarModule,
     MatChipsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ECommerceModule
   ],
     exports: [
     RouteRoutingModule,

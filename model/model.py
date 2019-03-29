@@ -103,6 +103,16 @@ class EveningReport(db.Model):
         self.nocashtransaction = nocashtransaction
         self.reportdate = reportdate
 
+    @staticmethod
+    def last():
+        return db.session.query(EveningReport.reportdate).order_by(EveningReport.reportdate.desc()).first()[0]
+
+    @staticmethod
+    def sevenDayAgo():
+        last = EveningReport.last()
+        sevenday = last - datetime.timedelta(days=7)
+        return sevenday
+
     @hybrid_property
     def isEmpty(self):
         return True if self.reportdate == datetime.date.today() else False

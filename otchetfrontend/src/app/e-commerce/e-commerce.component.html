@@ -1,0 +1,26 @@
+<!-- <app-profit-card></app-profit-card> -->
+
+<!-- <mat-grid-list cols="4" rowHeight="2:1">
+  <mat-grid-tile [colspan] = "3", [rowspan]= "1", >1</mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>3</mat-grid-tile>
+  <mat-grid-tile>4</mat-grid-tile>
+</mat-grid-list> -->
+
+
+<mat-grid-list cols="4" style="padding:10px" rowHeight="6:4">
+    <mat-grid-tile colspan="1" rowspan="1">
+      <app-profit-card></app-profit-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1">
+        <app-lesion-card></app-lesion-card>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1"> 
+        <app-radar-chrts></app-radar-chrts>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="1" rowspan="1"> </mat-grid-tile>
+
+    <mat-grid-tile colspan="4" rowspan="2">
+        <app-bar-chart></app-bar-chart>
+     </mat-grid-tile>
+</mat-grid-list>

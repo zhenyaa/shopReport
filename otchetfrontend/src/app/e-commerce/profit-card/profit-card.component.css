@@ -1,0 +1,9 @@
+mat-card{
+	background: linear-gradient(to bottom, #757f9a 0%, #d7dde8 100%);
+	text-decoration-color: #B1B2B2;
+	color: #747474;
+}
+
+mat-divider{
+	background-color: black;
+}

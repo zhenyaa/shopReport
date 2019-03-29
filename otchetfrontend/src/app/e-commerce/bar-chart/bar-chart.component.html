@@ -1,0 +1,12 @@
+<mat-card class="example-card">
+    <canvas   baseChart
+      [chartType]="'line'"
+      [datasets]="chartData"
+      [labels]="chartLabels"
+      [options]="chartOptions"
+      [legend]="true"
+      style="width: inherit; height: 500px"
+      *ngIf="showbord"
+      >
+    </canvas>
+</mat-card>

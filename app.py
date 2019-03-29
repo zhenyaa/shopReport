@@ -13,6 +13,8 @@ from component.emitentApi import EmitentAPI
 from component.directorExecuteMoney import ExecuteMoney
 from component.superUserLabel import SuserLabel
 from component.checkLogin import LoginCheked
+
+from component.adminDashbord import Dashbord
 from flask_alembic import Alembic
 import config
 import pymysql
@@ -55,6 +57,8 @@ def index():
 
 api.add_resource(Login, '/login/')
 api.add_resource(LoginCheked, '/clog/')
+api.add_resource(Dashbord, '/dashbord/<string:typeD>')
+
 
 api.add_resource(AdminReport, '/admin/')
 api.add_resource(Operation, '/operation/')
