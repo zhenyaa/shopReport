@@ -7,6 +7,7 @@ interface LastReport{
 	computerDesk:number,
 	notMany:number,
 	liveMany:number,
+  rro:number,
 }
 @Component({
   selector: 'app-last-report',
@@ -19,12 +20,15 @@ export class LastReportComponent implements OnInit {
 		computerDesk:null,
 		notMany:null,
 		liveMany:null,
+    rro:null,
 	}
 
   public Ldesk: FormControl;
   public LcDesk: FormControl;
   public LnMoney: FormControl;
   public LlMoney: FormControl;
+  public Lrro: FormControl;
+
   // unamePattern = "^[0-9]+(\.[0-9]{1,2})?$";
   constructor(public apiService:  APIService, public myRoute: Router) { }
 
@@ -45,6 +49,11 @@ export class LastReportComponent implements OnInit {
     Validators.pattern("^[0-9]+(\.[0-9]{1,2})?$")
   ]);
     this.LlMoney = new FormControl('', [
+    Validators.required,
+    Validators.minLength(1),
+    Validators.pattern("^[0-9]+(\.[0-9]{1,2})?$")
+  ]);
+    this.Lrro = new FormControl('', [
     Validators.required,
     Validators.minLength(1),
     Validators.pattern("^[0-9]+(\.[0-9]{1,2})?$")

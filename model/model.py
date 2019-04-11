@@ -90,18 +90,20 @@ class EveningReport(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     computerdesk = db.Column(db.Float)
     desk = db.Column(db.Float)
+    rro = db.Column(db.Float, default = 0)
     rozmen = db.Column(db.Float)
     nocashtransaction = db.Column(db.Float)
     reportdate = db.Column(db.Date, default=datetime.date.today())
 
     parent_id = db.Column(db.Integer, db.ForeignKey('workpleace.id'))  # children relationship
 
-    def __init__(self,computerdesk, desk, rozmen, nocashtransaction, reportdate):
+    def __init__(self,computerdesk, desk, rozmen, nocashtransaction, reportdate, rro):
         self.computerdesk = computerdesk
         self.desk = desk
         self.rozmen = rozmen
         self.nocashtransaction = nocashtransaction
         self.reportdate = reportdate
+        self.rro = rro
 
     @staticmethod
     def last():

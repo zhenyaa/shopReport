@@ -2,19 +2,28 @@
 	<mat-card-title>Вечерний отчет</mat-card-title>
 	<mat-card-content>
 			<form class="example-form">
-		  <mat-form-field class="example-full-width">
+		  <mat-form-field class="example-full-width" appearance="outline">
+		  	<mat-label>Касса</mat-label>
 		    <input matInput [(ngModel)]= "lReport.desk"  [formControl]="Ldesk" placeholder="Касса" name="Desk" value="">
 		  </mat-form-field>
 
-		  <mat-form-field class="example-full-width">
+		  <mat-form-field class="example-full-width" appearance="outline">
+		  	<mat-label>Касса по компютеру</mat-label>
 		    <input matInput [(ngModel)]= "lReport.computerDesk" [formControl]="LcDesk" placeholder="Касса по компютеру" name="ComputerDesk" value="">
 		  </mat-form-field>
 
-		   <mat-form-field class="example-full-width">
+		   <mat-form-field class="example-full-width" appearance="outline">
+		   	<mat-label>РРО</mat-label>
+		    <input matInput [(ngModel)]= "lReport.rro" [formControl]="Lrro" placeholder="РРО" name="РРО" value="">
+		  </mat-form-field>
+
+		   <mat-form-field class="example-full-width" appearance="outline">
+		   	<mat-label>Безналичный</mat-label>
 		    <input matInput [(ngModel)]= "lReport.notMany" [formControl]="LnMoney"  placeholder="Безналичный" name="NotMany" value="">
 		  </mat-form-field>
 
-		   <mat-form-field class="example-full-width">
+		   <mat-form-field class="example-full-width" appearance="outline">
+		   	<mat-label>Остаток Размен</mat-label>
 		    <input matInput [(ngModel)]= "lReport.liveMany" [formControl]="LlMoney"  placeholder="Остаток Размен" name="LiveMany" value="">
 		  </mat-form-field>
 		</form>
@@ -31,15 +40,8 @@
 				  <mat-chip  *ngIf="LnMoney?.errors?.required">Пустое поле</mat-chip>
 				   <mat-chip  *ngIf="LlMoney?.errors?.pattern">Введите значение</mat-chip>
 				  <mat-chip  *ngIf="LlMoney?.errors?.required">Пустое поле</mat-chip>
+				   <mat-chip  *ngIf="Lrro?.errors?.pattern">Введите значение</mat-chip>
+				  <mat-chip  *ngIf="Lrro?.errors?.required">Пустое поле</mat-chip>
 
-
-				 <!--  <mat-chip *ngIf="udesk.errors?.pattern">Неверные данные, поле касса </mat-chip>
-				  <mat-chip *ngIf="ucomd.errors?.pattern">Неверные данные, поле касса компютер</mat-chip>
-				  <mat-chip *ngIf="ulma.errors?.pattern">Неверные данные, поле остаток</mat-chip>
-				  <mat-chip *ngIf="unotm.errors?.pattern">Неверные данные, поле безнал</mat-chip>
-				  <mat-chip *ngIf="!lReport.desk.length">Введите значение</mat-chip>
-				  <mat-chip *ngIf="!lReport.computerDesk.length">Введите значение</mat-chip>
-				  <mat-chip *ngIf="!lReport.notMany.length">Введите значение</mat-chip>
-				  <mat-chip *ngIf="!lReport.liveMany.length">Введите значение</mat-chip> -->
 			</mat-chip-list>
 </mat-card>

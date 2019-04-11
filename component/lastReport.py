@@ -11,12 +11,13 @@ class LastReport(Resource):
     #     return {'hello': 'world'}
     @login_required
     @requires_roles("USER", "SUPERUSER")
+
     def post(self):
         emptydata = Inkasation(None, None, datetime.date.today())
         db.session.add(emptydata)
         json_data = request.get_json(force= True)
         print(json_data)
-        Deskdata = EveningReport(json_data["computerDesk"],json_data["desk"],json_data["liveMany"],json_data["notMany"],datetime.date.today())
+        Deskdata = EveningReport(json_data["computerDesk"],json_data["desk"],json_data["liveMany"],json_data["notMany"],datetime.date.today(), json_data['rro'])
         if db.session.query(EveningReport.reportdate, EveningReport.parent_id).filter_by(reportdate=datetime.date.today()).filter_by(parent_id=current_user.id).one_or_none():
             return json.dumps({'success': False}), 409, {'ContentType': 'application/json'}
         db.session.add(Deskdata)

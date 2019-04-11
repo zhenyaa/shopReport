@@ -27,7 +27,7 @@ export class AdminReportComponent implements OnInit {
     public titleViwe:  Array<object> = [];
     public tdata:  Array<object> = [];
     public executeDate:  Array<object> = [];
-    displayedColumns: string[] = ['Магазин', 'Касса', 'morningR', 'tsum', 'erd', 'erc','ern','err', 'erdate','test', 'test2', 'test3', 'but'];
+    displayedColumns: string[] = ['Магазин', 'Касса', 'morningR', 'tsum', 'erd', 'rro', 'erc','ern','err', 'erdate','test', 'test2', 'test3', 'but'];
 // ,'morningR', 'tsum', 'err', 'erc', 'ern'
  adminrequste:adminRequst ={
   shop:null,
@@ -161,6 +161,9 @@ err => {
   }
   getTotalerr(){
     return this.tdata.reduce((acc, value) => acc + value['err'], 0);
+  }
+  getTotalRro(){
+    return this.tdata.reduce((acc, value) => acc + value['rro'], 0);
   }
   getTotalTest(){
     return this.tdata.reduce((acc, value) => acc + value['morningR']+ value['erc'] - value['ern'], 0);

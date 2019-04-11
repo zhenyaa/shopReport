@@ -85,6 +85,12 @@
 				    <td mat-footer-cell *matFooterCellDef> {{getTotalerc() | currency}} </td>
 				  </ng-container>
 
+				   <ng-container matColumnDef="rro">
+				    <th mat-header-cell *matHeaderCellDef> РРО </th>
+				    <td mat-cell *matCellDef="let tdata"> {{tdata.rro | number: '.2'}} </td>
+				    <td mat-footer-cell *matFooterCellDef> {{getTotalRro() | currency}} </td>
+				  </ng-container>
+
 				  <ng-container matColumnDef="ern">
 				    <th mat-header-cell *matHeaderCellDef> Вечер безналичный </th>
 				    <td mat-cell *matCellDef="let tdata"> {{tdata.ern | number: '.2'}} </td>
